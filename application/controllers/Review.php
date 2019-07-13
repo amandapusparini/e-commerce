@@ -17,14 +17,13 @@ class Review extends CI_Controller {
 
         //var_dump($_POST);
 
-        $nama = $this->input->post('nama');
-        $email = $this->input->post('email');
+        $id_user = $this->session->userdata('id_user');
+        $email = $this->input->post('email_user');
         $komentar = $this->input->post('komentar');
         
-        $this->db->set('nama', $nama);
-        $this->db->set('email', $email);
+        $this->db->set('id_user', $id_user);
         $this->db->set('komentar', $komentar);
-        $this->db->insert('user');
+        $this->db->insert('review');
 
        redirect(base_url('Index'));
     }

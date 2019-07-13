@@ -94,17 +94,76 @@ class Makanan extends CI_Controller {
 
 		
 		$this->cart->insert($data);
+
+
 		$total = 0;
 		foreach ($this->cart->contents() as $key ) {
-				$total = $total + $key['qty'];
+				// var_dump($key['qty']);
+				if($key['qty']<0){
+					$this->delete($key['rowid']);
+				}else{
+					
+					$total = $total + $key['qty'];
+				}
 			}
 
-		$data = json_decode($this->input->post('jml'));
+		$data = json_decode("success");
 	}
 
-	public function detailProduk(){
-		$this->load->view('user/v_produk');
+	public function detailProduk($id_detail){
+		$this->db->where('id_detail', $id_detail);
+		$data['getdetail']=$this->db->get('detail_kategori')->row();
+		//var_dump($data); exit();
+		$this->load->view('user/v_produk',$data);
 	}
+
+	public function delete($id){
+		$data= array(
+			'id'=> $id,
+			'qty' => 0
+		);
+		$this->cart->update($data);
+	}
+
+	public function inputPesanan(){
+		$id_user = $this->session->userdata('id_user');
+
+		$tgl=date('d');
+		$bln=date('m');
+		$thn=date('y');
+
+		$no = $this->db->get('pesanan')->num_rows();
+		$no_pesanan=$tgl.$bln.$thn.$no;
+
+		$this->db->set('no_pesanan',$no_pesanan);
+		$this->db->set('id_user',$id_user);
+		$this->db->insert('pesanan');
+
+		$id_pesanan = $this->db->insert_id();//untuk mengambil id terakhir waktu save
+
+		foreach ($this->cart->contents() as $key ) {
+			$id_detail= $key['id'];
+			$jml_detail=$key['qty'];
+			$sub_total=$key['subtotal'];
+			
+			$this->db->set('id_detail',$id_detail);
+			$this->db->set('id_pesanan',$id_pesanan);
+			$this->db->set('jml_detail',$jml_detail);
+			$this->db->set('sub_total',$sub_total);
+			$this->db->set('status', 0);
+			$this->db->insert('detail_pemesanan');
+
+			$this->db->set('poin',$jml_detail);
+			$this->db->where('id_detail',$id_detail);
+			$this->db->update('detail_kategori');
+		}
+
+		
+		$this->cart->destroy();
+		redirect(base_url('Index'));	
+	}
+
+
 	
 		
 }

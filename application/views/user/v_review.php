@@ -5,7 +5,7 @@
 
     <form action="<?php echo base_url('Review/input') ?>" style="margin:100px" method="post">    
 		<table>
-            <tr>
+            <!-- <tr>
                 <td>Nama</td>
                 <td>&nbsp&nbsp:</td>
                 <td>&nbsp&nbsp&nbsp<input type="text" name="nama" id="nama" value="" placeholder="Masukkan Nama"></td>
@@ -13,8 +13,8 @@
             <tr>
                 <td>Email</td>
                 <td>&nbsp&nbsp:</td>
-                <td>&nbsp&nbsp&nbsp<input type="text" name="email" id="email" value="" placeholder="Masukkan Email"></td>
-            </tr>
+                <td>&nbsp&nbsp&nbsp<input type="text" name="email_user" id="email_user" value="" placeholder="Masukkan Email"></td>
+            </tr> -->
             <tr>
                 <td>Komentar</td>
                 <td>&nbsp&nbsp:</td>

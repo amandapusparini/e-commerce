@@ -3,7 +3,7 @@
 <div class="super_overlay"></div>
 
 
-    <form action="<?php echo base_url('User/prosesregister') ?>" style="margin:80px" method="post">    
+    <form action="<?php echo base_url('User/prosesregister') ?>" style="margin:80px" method="post" enctype="multipart/form-data">    
 		<table>
             <tr>
                 <td>Nama</td>
@@ -29,6 +29,15 @@
                 <td>Password</td>
                 <td>&nbsp&nbsp:</td>
                 <td>&nbsp&nbsp&nbsp<input type="password" name="password" id="password" value="" placeholder="Masukkan Password"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>:</td>
+                <td><input type="text" name="email" id="email" value="" placeholder="Masukkan Email"></td>
+            </tr>   
+            <tr>
+                <td>Gambar</td>
+                <td><input type="file" name="gambar" id="gambar" value="" placeholder=""></td>
             </tr>
             <tr>
                 <td colspan="3" align="right">

@@ -15,7 +15,7 @@
 								<div class="product_info d-flex flex-row align-items-start justify-content-start">
 									<div>
 										<div>
-											<div class="product_name"><a href="<?php echo base_url('Makanan/detailProduk'); ?>"><?php echo $row->nama_detail; ?></a></div>
+											<div class="product_name"><a href="<?php echo base_url('Makanan/detailProduk')."/".$row->id_detail;; ?>"><?php echo $row->nama_detail; ?></a></div>
 											<div class="product_category">Kategori: <a href="category.html"><?php echo $row->nama_sub_kategori ?></a></div>
 										</div>
 									</div>

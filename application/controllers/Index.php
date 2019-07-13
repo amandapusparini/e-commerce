@@ -11,14 +11,24 @@ class Index extends CI_Controller {
 	public function index()
 	{
 
-		//$this->db->get('nama_tabel');
-		// $this->db->query('select * from detail_kategori')
-		$this->db->join('sub_kategori','detail_kategori.id_sub_kategori=sub_kategori.id_sub_kategori');
-		$data['detail_menu']=$this->db->get('detail_kategori')->result();
-		// var_dump($data); exit();
+		if($this->input->post('search') !=""){
+			$this->db->like('nama_detail',$this->input->post('search'));
+			$this->db->join('sub_kategori','detail_kategori.id_sub_kategori=sub_kategori.id_sub_kategori');
+			$data['detail_menu'] = $this->db->get('detail_kategori')->result();
+			
+			// var_dump($this->input->post()); exit;
+		}else{
+			$this->db->limit('12');
+			$this->db->order_by('detail_kategori.poin', 'desc');
+			$this->db->join('sub_kategori','detail_kategori.id_sub_kategori=sub_kategori.id_sub_kategori');
+			$data['detail_menu']=$this->db->get('detail_kategori')->result();
+		}
 
 		
 		$this->load->view('user/home',$data);
 	}
 
+	public function homeLogo(){
+		redirect(base_url('Index'));	
+	}
 }

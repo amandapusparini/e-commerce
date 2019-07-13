@@ -847,7 +847,7 @@ section
 }
 .product_name
 {
-	max-width: 175px;
+	/* max-width: 175px; */
 }
 .product_name a
 {

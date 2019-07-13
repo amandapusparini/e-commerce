@@ -26,8 +26,8 @@
 
 	<!-- Search -->
 	<div class="menu_search">
-		<form action="#" id="menu_search_form" class="menu_search_form">
-			<input type="text" class="search_input" placeholder="Search Item" required="required">
+		<form action="<?php echo base_url('Index/index') ?>" method="post" id="menu_search_form" class="menu_search_form">
+			<input type="text" class="search_input" placeholder="Cari Makan" required="required">
 			<!-- <button class="menu_search_button"><img src="images/search.png" alt=""></button> -->
 		</form>
 	</div>
@@ -46,22 +46,51 @@
 			</div>
 
 			<div id="<?php echo $row->kategori ?>" class="collapse" aria-labelledby="<?php echo $row->id_kategori ?>" data-parent="#accordionExample">
-			<div class="card-body">
-			<?php $id_kategori = $row->id_kategori; 
-				$this->db->where('id_kategori',$id_kategori);
-				$getSubKategori = $this->db->get('sub_kategori')->result();
-				echo "<ul>";
-				foreach($getSubKategori as $subKategori){
-					echo "<li><a href='".base_url('Makanan/index/'.$subKategori->id_sub_kategori)."'>".$subKategori->nama_sub_kategori."</a></li>";
-				}
-				echo "</ul>";
-			?>
-			</div>
+				<div class="card-body">
+					<?php $id_kategori = $row->id_kategori; 
+						$this->db->where('id_kategori',$id_kategori);
+						$getSubKategori = $this->db->get('sub_kategori')->result();
+						echo "<ul>";
+						foreach($getSubKategori as $subKategori){
+							echo "<li><a href='".base_url('Makanan/index/'.$subKategori->id_sub_kategori)."'>".$subKategori->nama_sub_kategori."</a></li>";
+						}
+						echo "</ul>";
+					?>
+				</div>
 			</div>
 		</div>
+		
 		<?php } ?>
-		<br>
+		
+			<div class="card">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#pesanan" aria-expanded="true" aria-controls="collapseOne">
+							Pesanan
+						</button>
+					</h2>
+				</div>
 
+				<div id="pesanan" class="collapse" aria-labelledby="pesanan" data-parent="#accordionExample">
+					<div class="card-body">
+						<?php
+						$this->db->order_by('no_pesanan','DESC');
+							$this->db->where('id_user',$this->session->userdata('id_user'));
+							$getPesanan = $this->db->get('pesanan')->result();
+							// var_dump($getPesanan);
+							echo "<ul>";
+							foreach($getPesanan as $subPesanan){
+								echo "<li><a href='".base_url('Pesanan/index/'.$subPesanan->id_pesanan)."'>".$subPesanan->no_pesanan." | ".$subPesanan->tgl_pesanan."</a></li>";
+							}
+							echo "</ul>";
+						?>
+					</div>
+				</div>
+			</div>
+		
+	
+		<br>	
+			
 <!-- form login -->
 		<div class="login1">
 
@@ -71,6 +100,7 @@
 			$this->db->where('id_user', $id_user);
 			$user=$this->db->get('user')->row();
 		?>
+
 		<table>
             <tr>
                 <td>Nama</td>
@@ -141,7 +171,7 @@
 		<div class="header_overlay"></div>
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
 			<div class="logo">
-				<a href="">
+				<a href="<?php echo base_url('Index');?>">
 					<div class="d-flex flex-row align-items-center justify-content-start">
 						<div><img src="<?php echo base_url('assets/user');?>/images/logo_bfo.png" alt=""></div>
 						<div>Banana Factory Outlet </div>
@@ -161,8 +191,8 @@
 			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
 				<!-- Search -->
 				<div class="header_search">
-					<form action="#" id="header_search_form">
-						<input type="text" class="search_input" placeholder="Search Item" required="required">
+					<form action="<?php echo base_url("Index/index") ?>" id="header_search_form" method="post">
+						<input type="text" class="search_input" placeholder="Cari Makanan" required="required" name="search" ida="search">
 						<button class="header_search_button"><img src="<?php echo base_url('assets/user');?>/images/search.png" alt=""></button>
 					</form>
 				</div>
