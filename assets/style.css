@@ -1,0 +1,10 @@
+.login1{
+    width: 100% ;
+    margin-top:7%;
+    box-shadow:0 3px 20px rgba(227,14,14,1.3);
+    padding: 30px;
+}
+
+.btn{
+    width:49%;
+}
