@@ -16,7 +16,8 @@
 								</div>
 								<div class="footer_about_text">
 									<p>Jalan Akses UI No. 61 Kelapa Dua Depok
-									Samping Universitas Gunadarma Kampus E</p>
+									Samping Universitas Gunadarma 
+									Kampus E</p>
 								</div>
 							</div>
 						</div>
@@ -24,11 +25,11 @@
 						<!-- Footer Contact -->
 						<div class="col-lg-4 footer_col">
 							<div class="footer_contact">
-								<div class="footer_title">Stay in Touch</div>
+								<div class="footer_title"></div>
 								<div class="footer_social">
 									<ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
-										<li><a href="https://twitter.com/bananafactory04"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-										<li><a href="https://www.instagram.com/bananafactory04/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+										<li><a href="https://twitter.com/bananafactory04"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="https://www.instagram.com/bananafactory04/"><i class="fab fa-twitter-square"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -48,9 +49,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<ul class="d-flex flex-row align-items-center justify-content-start">
 										<!-- <li><a href="category.html">Women</a></li>
 										<li><a href="category.html">Men</a></li>
-										<li><a href="category.html">Kids</a></li>-->
-										<li><a href="<?php echo base_url('Review/reviewProduk');?>">Review</a></li>
+										<li><a href="category.html">Kids</a></li>
 										<li><a href="<?php echo base_url('C_footer/kontak');?>">Contact</a></li>
+										<li><a href="<?php echo base_url('Review/reviewProduk');?>">Review</a></li>-->
 									</ul>
 								</nav>
 							</div>

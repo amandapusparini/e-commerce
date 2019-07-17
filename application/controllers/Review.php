@@ -25,7 +25,7 @@ class Review extends CI_Controller {
         $this->db->set('komentar', $komentar);
         $this->db->insert('review');
 
-       redirect(base_url('Index'));
+       redirect(base_url('Makanan/inputPesanan'));
     }
 
 }

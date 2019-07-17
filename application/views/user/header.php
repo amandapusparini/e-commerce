@@ -152,7 +152,7 @@
 						</div>
 					</div>
 				<input type="submit" name="submit" id="submit" value="Login" class="btn btn-primary"> 
-				<a href="<?php echo base_url('User/register')?>">Daftar</a>
+				<a href="<?php echo base_url('User/register')?>"class="btn btn-link">Daftar</a>
 			</form>
 		<?php } ?>
 		</div>

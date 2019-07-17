@@ -78,7 +78,7 @@
 							<!-- Cart Buttons -->
 							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
 								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-									<div class="button button_continue trans_200"><a href="<?php echo base_url('Makanan/inputPesanan'); ?>">Check Out</a></div>
+									<div class="button button_continue trans_200"><a href="<?php echo base_url('Review/reviewProduk'); ?>">Check Out</a></div>
 								</div>
 							</div>
 						</div>
@@ -111,6 +111,7 @@
                     success:function(data){
                         // alert("berhasil");
                         location.reload();
+						// console.log(data);
                     }
                 });
             }

@@ -18,10 +18,24 @@ class Index extends CI_Controller {
 			
 			// var_dump($this->input->post()); exit;
 		}else{
-			$this->db->limit('12');
+			$this->db->limit('6'); 
+			$this->db->where('sub_kategori.id_kategori', '1');
 			$this->db->order_by('detail_kategori.poin', 'desc');
 			$this->db->join('sub_kategori','detail_kategori.id_sub_kategori=sub_kategori.id_sub_kategori');
-			$data['detail_menu']=$this->db->get('detail_kategori')->result();
+			// $this->db->join('kategori','kategori.id_kategori=sub_kategori.id_kategori');
+			$data['detail_makanan']=$this->db->get('detail_kategori')->result();
+
+			$this->db->limit('6'); 
+			$this->db->where('sub_kategori.id_kategori', '2');
+			$this->db->order_by('detail_kategori.poin', 'desc');
+			$this->db->join('sub_kategori','detail_kategori.id_sub_kategori=sub_kategori.id_sub_kategori');
+			// $this->db->join('kategori','kategori.id_kategori=sub_kategori.id_kategori');
+			$data['detail_minuman']=$this->db->get('detail_kategori')->result();
+
+			$this->db->order_by('id_review','desc');
+			$this->db->join('user', 'user.id_user=review.id_user');
+			$data['getreview']=$this->db->get('review')->result();
+
 		}
 
 		

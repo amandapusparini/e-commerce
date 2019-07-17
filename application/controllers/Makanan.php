@@ -12,7 +12,7 @@ class Makanan extends CI_Controller {
 	public function index($id_sub_kategori=NULL)
 	{
 	 //untuk menghapus ssemua makanan di cart
-	//$this->cart->destroy();
+		// $this->cart->destroy();
         $data['rowmakanan']= $this->M_makanan->cekData($id_sub_kategori);
         // var_dump($data); exit();
 		$this->load->view('user/v_makanan', $data);
@@ -25,6 +25,7 @@ class Makanan extends CI_Controller {
 	public function inputcart($id_detail){
 		$this->db->where('id_detail', $id_detail);
 		$getdetail=$this->db->get('detail_kategori')->row();
+		// var_dump("disini"); exit();
 
 		//membuat shoping cart
 		$data = array(
@@ -99,8 +100,8 @@ class Makanan extends CI_Controller {
 		$total = 0;
 		foreach ($this->cart->contents() as $key ) {
 				// var_dump($key['qty']);
-				if($key['qty']<0){
-					$this->delete($key['rowid']);
+				if($key['qty']<=0){
+					$this->cart->remove($key['rowid']);
 				}else{
 					
 					$total = $total + $key['qty'];
@@ -126,6 +127,7 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputPesanan(){
+		// exit();
 		$id_user = $this->session->userdata('id_user');
 
 		$tgl=date('d');
