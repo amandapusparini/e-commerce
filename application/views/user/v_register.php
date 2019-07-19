@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fontawesome-free/css/all.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url();?>assets/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+
 <?php $this->load->view ("user/header") ?>
 <div class="super_container_inner">
 <div class="super_overlay"></div>
@@ -34,10 +49,10 @@
                 <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email">
         </div>
 
-        <div class="form-group">
+        <!--<div class="form-group">
                 <label for="gambar">Gambar</label>
                 <input type="file" class="form-control" name="gambar" id="gambar" placeholder="">
-        </div>
+        </div>-->
 
         <button class="btn btn-primary" name='btn' id="btn" colspan="3" align="right">Simpan</button>
     </form>

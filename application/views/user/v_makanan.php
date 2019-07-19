@@ -27,9 +27,6 @@
 								
 								<div class="product_buttons">
 									<div class="text-right d-flex flex-row align-items-start justify-content-start">
-										<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-											<div><div><img src="<?php echo base_url('assets/user');?>/images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-										</div>
 										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
 											<div><div>
 											<a href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>">
