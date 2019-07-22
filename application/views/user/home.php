@@ -398,9 +398,9 @@
 							    	</div>
 							    	<div class="col-md-8">
 							      		<div class="card-body">
-							        		<h5 class="card-title"><?php echo $row->nama; ?></h5>
+							        		<h5 class="card-title"><?php echo $row->nama; ?></h5><p class="card-text"><small class="text-muted"><?php echo $row->tgl_komentar; ?></small></p>
 							        		<p class="card-text"><?php echo $row->komentar; ?></p>
-							        		<p class="card-text"><small class="text-muted"><?php echo $row->tgl_komentar; ?></small></p>
+							        		
 							      		</div>
 							    	</div>
 							  	</div>
