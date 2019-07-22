@@ -101,7 +101,7 @@
 			$user=$this->db->get('user')->row();
 		?>
 
-		<table>
+		<table width="100%">
             <tr>
                 <td>Nama</td>
                 <td>:</td>
@@ -118,7 +118,7 @@
                 <td><?php echo $user->alamat; ?></td>
 			</tr>
 			<tr>
-				<td colspan="3"><a href="<?php echo base_url('User/proseslogout') ?>" class="btn btn-danger">Keluar</a></td>
+				<td colspan="3" align="right"><a href="<?php echo base_url('User/proseslogout') ?>" class="btn btn-danger">Keluar</a></td>
 			</tr>
 		</table>
 
