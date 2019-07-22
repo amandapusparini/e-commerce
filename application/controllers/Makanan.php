@@ -23,29 +23,26 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputcart($id_detail){
-		$this->db->where('id_detail', $id_detail);
-		$getdetail=$this->db->get('detail_kategori')->row();
-		// var_dump("disini"); exit();
+		if(!empty($this->session->userdata('id_user') == "")){
+			$this->db->where('id_detail', $id_detail);
+			$getdetail=$this->db->get('detail_kategori')->row();
+			// var_dump("disini"); exit();
 
-		//membuat shoping cart
-		$data = array(
-			'id' => $getdetail->id_detail,
-			'qty' => 1,
-			'name' => $getdetail->nama_detail,
-			'price' => $getdetail->harga,
-			'image'=>$getdetail->gambar
-		);
+			//membuat shoping cart
+			$data = array(
+				'id' => $getdetail->id_detail,
+				'qty' => 1,
+				'name' => $getdetail->nama_detail,
+				'price' => $getdetail->harga,
+				'image'=>$getdetail->gambar
+			);
 
+			
+			$this->cart->insert($data);
+		}
 		
-		$this->cart->insert($data);
 
-		// redirect(base_url())
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
-		//untuk ngecek script
-		// foreach ($this->cart->contents() as $key ) {
-		// 	echo $key['qty']."<br>";
-		// }
-		//  exit;
 	}
 
 	public function detailCart(){
