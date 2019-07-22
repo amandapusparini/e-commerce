@@ -386,34 +386,30 @@
 						<div class="section_title text-center">Review</div>
 					</div>
 				</div>
-				<div class="row products_row" style="size:60px !important">
+				<div class="row products_row banana-slider" style="size:60px !important">
+					<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner">
+					  	<?php  foreach($getreview as $row){ ?>
+					    <div class="carousel-item <?php if($id_review == $row->id_review){ echo "active";} ?>">
+					      	<div class="card mb-3" style="max-width: 540px;">
+							  	<div class="row no-gutters">
+							    	<div class="col-md-4">
+							      		<img src="<?php echo base_url('assets/uploads/image_user')."/".$row->gambar ?>" class="card-img" alt="<?php echo $row->nama; ?>">
+							    	</div>
+							    	<div class="col-md-8">
+							      		<div class="card-body">
+							        		<h5 class="card-title"><?php echo $row->nama; ?></h5>
+							        		<p class="card-text"><?php echo $row->komentar; ?></p>
+							        		<p class="card-text"><small class="text-muted"><?php echo $row->tgl_komentar; ?></small></p>
+							      		</div>
+							    	</div>
+							  	</div>
+							</div>
+					    </div>
+						<?php } ?>
+					  </div>
+					</div>
 				
-				<?php $data =''; foreach($getreview as $row){ ?>
-				<h1>
-				<?php $data .= "Nama: ".$row->nama." Tanggal: ".$row->tgl_komentar." Komentar: ".$row->komentar; ?>
-				</h1>
-				<!-- <table>
-				<tr>
-					<td>Nama</td>
-					<td>:</td>
-					<td></td>
-				</tr>
-
-				<tr>
-					<td>Tanggal</td>
-					<td>:</td>
-					<td><?php echo $row->tgl_komentar?></td>
-				</tr>
-				<tr>
-					<td>Komentar</td>
-					<td>:</td>
-					<td><?php echo $row->komentar?></td>
-				</tr>
-				</table> -->
-
-				<?php } ?>
-
-				<?php echo "<marquee>".$data."</marquee>" ?>
 				</div>
 			</div>
 		</div>

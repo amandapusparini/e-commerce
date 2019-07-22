@@ -23,7 +23,7 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputcart($id_detail){
-		if(!empty($this->session->userdata('id_user') == "")){
+		if(!empty($this->session->userdata('id_user'))){
 			$this->db->where('id_detail', $id_detail);
 			$getdetail=$this->db->get('detail_kategori')->row();
 			// var_dump("disini"); exit();
@@ -124,6 +124,7 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputPesanan(){
+		// var_dump($this->input->post());
 		// exit();
 		$id_user = $this->session->userdata('id_user');
 

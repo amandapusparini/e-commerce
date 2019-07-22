@@ -15,7 +15,7 @@ class Review extends CI_Controller {
 
     public function input(){
 
-        //var_dump($_POST);
+        var_dump($_POST); exit();
 
         $id_user = $this->session->userdata('id_user');
         $email = $this->input->post('email_user');
@@ -23,7 +23,7 @@ class Review extends CI_Controller {
         
         $this->db->set('id_user', $id_user);
         $this->db->set('komentar', $komentar);
-        $this->db->insert('review');
+        $this->db->insert('revie');
 
        redirect(base_url('Makanan/inputPesanan'));
     }

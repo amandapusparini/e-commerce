@@ -76,11 +76,13 @@
                                 <?php $no++; } ?>
                                 <div class="product_total product_text" style="width:100% !important;"><span></span>Rp. <?php echo number_format($total, 0, ',', '.');  ?></div>
 							<!-- Cart Buttons -->
+							<?php if($total!=""){?>
 							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
 								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-									<div class="button button_continue trans_200"><a href="<?php echo base_url('Review/reviewProduk'); ?>">Check Out</a></div>
+									<div class="button button_continue trans_200"><a href="<?php echo base_url('Review/reviewProduk'); ?>" disabled>Check Out</a></div>
 								</div>
 							</div>
+							<?php } ?>
 						</div>
 					</div>
 				</div>

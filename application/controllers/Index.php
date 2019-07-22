@@ -34,7 +34,11 @@ class Index extends CI_Controller {
 
 			$this->db->order_by('id_review','desc');
 			$this->db->join('user', 'user.id_user=review.id_user');
-			$data['getreview']=$this->db->get('review')->result();
+			$sqlReview = $this->db->get('review');
+			$data['getreview']=$sqlReview->result();
+
+			$row = $sqlReview->row();
+			$data['id_review'] = $row->id_review;
 
 		}
 
