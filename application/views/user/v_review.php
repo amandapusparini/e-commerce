@@ -1,4 +1,39 @@
 <?php $this->load->view ("user/header") ?>
+<style type="text/css">
+.simpan
+{
+    width: 138px;
+    height: 44px;
+    background: #2fce98;
+    border-radius: 2px;
+    text-align: center;
+    border: solid 2px #2fce98;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.simpan a
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    line-height: 40px;
+}
+.simpan:hover
+{
+    background: transparent;
+}
+.simpan:hover a
+{
+    color: #2fce98;
+}
+</style>
 <div class="super_container_inner">
 <div class="super_overlay"></div>
 
@@ -36,7 +71,9 @@
         <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
             <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
                 <div class="button button_clear trans_200" style="margin-right:30px"><a href="<?php echo base_url('Makanan/inputPesanan');?>">Lain Kali</a></div>
-                <div class="button button_continue trans_200"><a href="<?php echo base_url('Makanan/inputPesanan'); ?>">Simpan</a></div>
+                <!-- <div > -->
+                <input type="submit" name="" value="Simpan" class="simpan">
+                <!-- <a href="<?php //echo base_url('Makanan/inputPesanan'); ?>">Simpan</a></div> -->
             </div>
         </div>
     </form>
