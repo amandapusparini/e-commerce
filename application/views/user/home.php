@@ -15,11 +15,11 @@
                             <div class="l_p_text">
                                 <ul>
                                     <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                    <li><a href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>" class="add_cart_btn">Add To Cart</a></li>
                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                 </ul>
                                 <h4><?php echo $row->nama_detail; ?></h4>
-                                <h5><del>$45.50</del>  $40</h5>
+                                <h5>Rp. <?php echo number_format($row->harga, 0, ',', '.'); ?></h5>
                             </div>
                         </div>
                         <!-- <div class="l_product_item">
@@ -63,7 +63,7 @@
                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                 </ul>
                                 <h4><?php echo $row->nama_detail; ?></h4>
-                                <h5><del>$45.50</del>  $40</h5>
+                                <h5>Rp. <?php echo number_format($row->harga, 0, ',', '.'); ?></h5>
                             </div>
                         </div>
                         

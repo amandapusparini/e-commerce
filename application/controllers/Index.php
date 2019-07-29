@@ -17,6 +17,9 @@ class Index extends CI_Controller {
 			$data['detail_menu'] = $this->db->get('detail_kategori')->result();
 			
 			// var_dump($this->input->post()); exit;
+			$data['search'] = $this->input->post('search');
+			$this->load->view('user/v_search',$data);
+
 		}else{
 			$this->db->limit('6'); 
 			$this->db->where('sub_kategori.id_kategori', '1');
@@ -36,10 +39,10 @@ class Index extends CI_Controller {
 			$this->db->join('user', 'user.id_user=review.id_user');
 			$data['getreview']=$this->db->get('review')->result();
 
+			$this->load->view('user/home',$data);
 		}
 
 		
-		$this->load->view('user/home',$data);
 	}
 
 	public function homeLogo(){

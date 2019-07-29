@@ -42,13 +42,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3">
-                            <div class="top_header_left" style="padding-top:0px;">
+			    <div class="top_header_left" style="padding-top:0px;">
+			    <form action="<?php echo base_url("Index/index") ?>" id="header_search_form" method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="search" id="search">
                                     <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button"><i class="icon-magnifier"></i></button>
+                                    <button class="btn btn-secondary" type="submit"><i class="icon-magnifier"></i></button>
                                     </span>
-                                </div>
+				</div>
+				</form>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -58,13 +60,26 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="top_right_header">
-                               
+                            <?php 
+                            $jml = 0;
+                            $sub_total = 0;
+                                foreach ($this->cart->contents() as $key ) {
+                                        $jml = $jml + $key['qty'];
+                                        $sub_total = $sub_total + ($key['subtotal']*$jml);
+                                    }
+
+                            ?>
+                            <style>
+                                li.cart a:before{
+                                    content: '<?php echo $jml; ?>';
+                                }
+                            </style>
                                 <ul class="top_right">
                                     <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
-                                    <li class="cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                                    <li class="cart" style="content:'2' !important;"><a href="#"><i class="icon-handbag icons"></i></a></li>
                                     <li class="h_price">
                                         <select class="selectpicker" disabled>
-                                            <option>$0.00</option>
+                                            <option>Rp. <?php echo number_format($sub_total, 0, ',', '.'); ?></option>
                                         </select>
                                     </li>
                                 </ul>

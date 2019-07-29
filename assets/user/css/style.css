@@ -593,7 +593,7 @@ i:before {
 }
 
 .top_right li.cart a:before {
-  content: "0";
+  /* content: "2"; */
   height: 20px;
   width: 20px;
   border-radius: 50%;
