@@ -1,221 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Banana Factory Outlet</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/styles/bootstrap-4.1.2/bootstrap.min.css">
-<link href="<?php echo base_url('assets/user');?>/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/user');?>/styles/responsive.css">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" href="<?php echo base_url('assets/user');?>/img/fav-icon.png" type="image/x-icon" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Persuit</title>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/style.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fontawesome-free/css/all.min.css">
+        <!-- Icon css link -->
+        <link href="<?php echo base_url('assets/user');?>/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/vendors/line-icon/css/simple-line-icons.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/vendors/elegant-icon/style.css" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="<?php echo base_url('assets/user');?>/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Rev slider css -->
+        <link href="<?php echo base_url('assets/user');?>/vendors/revolution/css/settings.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/vendors/revolution/css/layers.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/vendors/revolution/css/navigation.css" rel="stylesheet">
+        
+        <!-- Extra plugin css -->
+        <link href="<?php echo base_url('assets/user');?>/vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
+        
+        <link href="<?php echo base_url('assets/user');?>/css/style.css" rel="stylesheet">
+        <link href="<?php echo base_url('assets/user');?>/css/responsive.css" rel="stylesheet">
 
-</head>
-<body>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        
+            <!--================Top Header Area =================-->
+            <div class="header_top_area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="top_header_left" style="padding-top:0px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="button"><i class="icon-magnifier"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="top_header_middle">
+                                <img src="<?php echo base_url('assets/user');?>/img/logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="top_right_header">
+                               
+                                <ul class="top_right">
+                                    <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
+                                    <li class="cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                                    <li class="h_price">
+                                        <select class="selectpicker" disabled>
+                                            <option>$0.00</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--================End Top Header Area =================-->
+        
+        <!--================Menu Area =================-->
+        <header class="shop_header_area">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#"><img src="<?php echo base_url('assets/user');?>/img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
 
-<!-- Menu -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav categories">
+                            <li class="nav-item">
+                                <select class="selectpicker" onchange="getMakanan(this.value)">
+				    <option value="">Kategori</option>
+					<?php 
+						$this->db->order_by('urutan','ASC');
+						$menu=$this->db->get('sub_kategori')->result();
+						foreach ($menu as $row){ ?>
+				    			<option value="<?php echo $row->id_sub_kategori; ?>"><?php echo $row->nama_sub_kategori ?></option>
+						<?php } ?>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown submenu active">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Home <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Home Simple</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-carousel.html">Home Carousel</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Home Full Width</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-parallax.html">Home Parallax</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-sidebar.html">Home Boxed</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-fixed-menu.html">Home Fixed</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown submenu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="compare.html">Compare</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout Method</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="register.html">Checkout Register</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="track.html">Track</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown submenu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Shop <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-2column.html">Prodcut No Sidebar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-3column.html">Prodcut Two Column</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-4column.html">Product Grid</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="categories-left-sidebar.html">Categories Left Sidebar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="categories-right-sidebar.html">Categories Right Sidebar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="categories-grid-left-sidebar.html">Categories Grid Sidebar</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="product-details.html">Prodcut Details 01</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="product-details2.html">Prodcut Details 02</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="product-details3.html">Prodcut Details 03</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shopping-cart.html">Shopping Cart 01</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="shopping-cart2.html">Shopping Cart 02</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="empty-cart.html">Empty Cart</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">lookbook</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--================End Menu Area =================-->
+        
+        <!--================Slider Area =================-->
+        <section class="main_slider_area">
+            <div class="container">
+                <div id="main_slider" class="rev_slider" data-version="5.3.1.6">
+                    <ul>
+                        <li data-index="rs-1587" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="<?php echo base_url('assets/user');?>/img/home-slider/slider-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="<?php echo base_url('assets/user');?>/img/home-slider/slider-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
 
-<div class="menu">
+                            <!-- LAYER NR. 1 -->
+                            <div class="slider_text_box">
+                                <div class="tp-caption tp-resizeme first_text" 
+                                data-x="['right','right','right','center','center']" 
+                                data-hoffset="['0','0','0','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['60','60','60','80','95']" 
+                                data-fontsize="['54','54','54','40','40']"
+                                data-lineheight="['64','64','64','50','35']"
+                                data-width="['470','470','470','300','250']"
+                                data-height="none"
+                                data-whitespace="['nowrap','nowrap','nowrap','nowrap','nowrap']"
+                                data-type="text" 
+                                data-responsive_offset="on" 
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                data-textAlign="['left','left','left','left','left','center']"
+                                style="z-index: 8;font-family: Montserrat,sans-serif;font-weight:700;color:#29263a;"><img src="<?php echo base_url('assets/user');?>/img/home-slider/2017-text.png" alt=""></div>
 
-	<!-- Search -->
-	<div class="menu_search">
-		<form action="<?php echo base_url('Index/index') ?>" method="post" id="menu_search_form" class="menu_search_form">
-			<input type="text" class="search_input" placeholder="Cari Makan" required="required">
-			<!-- <button class="menu_search_button"><img src="images/search.png" alt=""></button> -->
-		</form>
-	</div>
-	<!-- Navigation -->
-	<div class="accordion" id="accordionExample">
-		<?php 
-			$menu=$this->db->get('kategori')->result();
-			foreach ($menu as $row){ ?>
-		<div class="card">
-			<div class="card-header" id="headingOne">
-			<h2 class="mb-0">
-				<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<?php echo $row->kategori ?>" aria-expanded="true" aria-controls="collapseOne">
-				<?php echo $row->kategori; ?>
-				</button>
-			</h2>
-			</div>
+                                <div class="tp-caption tp-resizeme secand_text" 
+                                    data-x="['right','right','right','center','center',]" 
+                                    data-hoffset="['0','0','0','0']" 
+                                    data-y="['top','top','top','top']" data-voffset="['255','255','255','230','220']"  
+                                    data-fontsize="['48','48','48','48','36']"
+                                    data-lineheight="['52','52','52','46']"
+                                    data-width="['450','450','450','450','450']"
+                                    data-height="none"
+                                    data-whitespace="normal"
+                                    data-type="text" 
+                                    data-responsive_offset="on"
+                                    data-transform_idle="o:1;"
+                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                    data-textAlign="['left','left','left','left','left','center']"
+                                    >Jajal <br />Collection 
+                                </div>
 
-			<div id="<?php echo $row->kategori ?>" class="collapse" aria-labelledby="<?php echo $row->id_kategori ?>" data-parent="#accordionExample">
-				<div class="card-body">
-					<?php $id_kategori = $row->id_kategori; 
-						$this->db->where('id_kategori',$id_kategori);
-						$getSubKategori = $this->db->get('sub_kategori')->result();
-						echo "<ul>";
-						foreach($getSubKategori as $subKategori){
-							echo "<li><a href='".base_url('Makanan/index/'.$subKategori->id_sub_kategori)."'>".$subKategori->nama_sub_kategori."</a></li>";
-						}
-						echo "</ul>";
-					?>
-				</div>
-			</div>
-		</div>
-		
-		<?php } ?>
-		
-			<div class="card">
-				<div class="card-header" id="headingOne">
-					<h2 class="mb-0">
-						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#pesanan" aria-expanded="true" aria-controls="collapseOne">
-							Pesanan
-						</button>
-					</h2>
-				</div>
+                                <div class="tp-caption tp-resizeme third_btn" 
+                                    data-x="['right','right','right','center','center','center']" 
+                                    data-hoffset="['0','0','0','0']" 
+                                    data-y="['top','top','top','top']" data-voffset="['385','385','385','385','350']" 
+                                    data-width="['450','450','450','auto','auto']"
+                                    data-height="none"
+                                    data-whitespace="nowrap"
+                                    data-type="text" 
+                                    data-responsive_offset="on" 
+                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                    data-textAlign="['left','left','left','left','left','center']">
+                                    <!-- <a class="checkout_btn" href="#">read more</a> -->
+                                </div>
+                            </div>
+                        </li>
+                        <li data-index="rs-1588" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="<?php echo base_url('assets/user');?>/img/home-slider/slider-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="<?php echo base_url('assets/user');?>/img/home-slider/slider-2.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
+                            <!-- LAYERS -->
 
-				<div id="pesanan" class="collapse" aria-labelledby="pesanan" data-parent="#accordionExample">
-					<div class="card-body">
-						<?php
-						$this->db->order_by('no_pesanan','DESC');
-							$this->db->where('id_user',$this->session->userdata('id_user'));
-							$getPesanan = $this->db->get('pesanan')->result();
-							// var_dump($getPesanan);
-							echo "<ul>";
-							foreach($getPesanan as $subPesanan){
-								echo "<li><a href='".base_url('Pesanan/index/'.$subPesanan->id_pesanan)."'>".$subPesanan->no_pesanan." | ".$subPesanan->tgl_pesanan."</a></li>";
-							}
-							echo "</ul>";
-						?>
-					</div>
-				</div>
-			</div>
-		
-	
-		<br>	
-			
-<!-- form login -->
-		<div class="login1">
+                            <!-- LAYER NR. 1 -->
+                            <div class="slider_text_box">
+                                <div class="tp-caption tp-resizeme first_text" 
+                                data-x="['right','right','right','center','center']" 
+                                data-hoffset="['0','0','0','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['60','60','60','80','95']" 
+                                data-fontsize="['54','54','54','40','40']"
+                                data-lineheight="['64','64','64','50','35']"
+                                data-width="['470','470','470','300','250']"
+                                data-height="none"
+                                data-whitespace="['nowrap','nowrap','nowrap','nowrap','nowrap']"
+                                data-type="text" 
+                                data-responsive_offset="on" 
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                data-textAlign="['left','left','left','left','left','center']"
+                                style="z-index: 8;font-family: Montserrat,sans-serif;font-weight:700;color:#29263a;"><img src="<?php echo base_url('assets/user');?>/img/home-slider/2017-text.png" alt=""></div>
 
-		<?php if($this->session->userdata('id_user') != 0){
-			$id_user= $this->session->userdata('id_user');
+                                <div class="tp-caption tp-resizeme secand_text" 
+                                    data-x="['right','right','right','center','center',]" 
+                                    data-hoffset="['0','0','0','0']" 
+                                    data-y="['top','top','top','top']" data-voffset="['255','255','255','230','220']"  
+                                    data-fontsize="['48','48','48','48','36']"
+                                    data-lineheight="['52','52','52','46']"
+                                    data-width="['450','450','450','450','450']"
+                                    data-height="none"
+                                    data-whitespace="normal"
+                                    data-type="text" 
+                                    data-responsive_offset="on"
+                                    data-transform_idle="o:1;"
+                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                    data-textAlign="['left','left','left','left','left','center']"
+                                    >Best Summer <br />Collection 
+                                </div>
 
-			$this->db->where('id_user', $id_user);
-			$user=$this->db->get('user')->row();
-		?>
-
-		<table>
-            <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td><?php echo $user->nama; ?></td>
-            </tr>
-            <tr>
-                <td>No Telp</td>
-                <td>:</td>
-                <td><?php echo $user->no_tlp; ?></td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><?php echo $user->alamat; ?></td>
-			</tr>
-			<tr>
-				<td colspan="3"><a href="<?php echo base_url('User/proseslogout') ?>" class="btn btn-danger">Keluar</a></td>
-			</tr>
-		</table>
-
-		<?php
-		}else{
-		?>
-			<form action="<?php echo base_url('User/proseslogin') ?>" method="post">
-				<h4 class="text-center">Form Login</h4>
-				<div class="form-group">
-					<label>Username</label>
-
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<div class="input-group-text">
-								<i class="fas fa-user"></i>
-							</div>
-						</div>
-						<input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username Anda">
-					</div>
-				</div>
-
-				<div class="form-group">
-						<label>Password</label>
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<div class="input-group-text">
-									<i class="fas fa-unlock-alt"></i>
-								</div>
-							</div>
-							<input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password Anda">
-						</div>
-					</div>
-				<input type="submit" name="submit" id="submit" value="Login" class="btn btn-primary"> 
-				<a href="<?php echo base_url('User/register')?>"class="btn btn-link">Daftar</a>
-			</form>
-		<?php } ?>
-		</div>
-	</div> 
-
-
-	<!-- Contact Info -->
-
-</div>
-
-<div class="super_container">
-
-	<!-- Header -->
-
-	<header class="header">
-		<div class="header_overlay"></div>
-		<div class="header_content d-flex flex-row align-items-center justify-content-start">
-			<div class="logo">
-				<a href="<?php echo base_url('Index');?>">
-					<div class="d-flex flex-row align-items-center justify-content-start">
-						<div><img src="<?php echo base_url('assets/user');?>/images/logo_bfo.png" alt=""></div>
-						<div>Banana Factory Outlet </div>
-					</div>
-				</a>	
-			</div>
-			<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
-			<!-- <nav class="main_nav">
-				<ul class="d-flex flex-row align-items-start justify-content-start">
-					<li class="active"><a href="#">Women1</a></li>
-					<li><a href="#">Men</a></li>
-					<li><a href="#">Kids</a></li>
-					<li><a href="#">Home Deco</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-			</nav> -->
-			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
-				<!-- Search -->
-				<div class="header_search">
-					<form action="<?php echo base_url("Index/index") ?>" id="header_search_form" method="post">
-						<input type="text" class="search_input" placeholder="Cari Makanan" required="required" name="search" ida="search">
-						<button class="header_search_button"><img src="<?php echo base_url('assets/user');?>/images/search.png" alt=""></button>
-					</form>
-				</div>
-
-				<?php 
-				$jml = 0;
-					foreach ($this->cart->contents() as $key ) {
-							$jml = $jml + $key['qty'];
-						}
-
-				?>
-				<div class="user"><a href="<?php echo base_url('Makanan/detailCart') ?>"><div><img src="<?php echo base_url('assets/user');?>/images/cart.svg"><div><?php echo $jml ?></div></div></a></div>
-
-				<!-- Cart -->
-				<!-- <div class="cart">
-					<a href="cart.html">
-					<div>
-						<img class="svg" src="<?php //echo base_url('assets/user');?>/images/cart.svg" alt="https://www.flaticon.com/authors/freepik">
-						<div>1</div></div>
-					<div>1</div>
-					</a>
-				</div> -->
-				<!-- Phone -->
-			</div>
-		</div>
-	</header>
+                                <div class="tp-caption tp-resizeme third_btn" 
+                                    data-x="['right','right','right','center','center','center']" 
+                                    data-hoffset="['0','0','0','0']" 
+                                    data-y="['top','top','top','top']" data-voffset="['385','385','385','385','350']" 
+                                    data-width="['450','450','450','auto','auto']"
+                                    data-height="none"
+                                    data-whitespace="nowrap"
+                                    data-type="text" 
+                                    data-responsive_offset="on" 
+                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                    data-textAlign="['left','left','left','left','left','center']">
+                                    <!-- <a class="checkout_btn" href="#">read more</a> -->
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--================End Slider Area =================-->
