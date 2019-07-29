@@ -44,6 +44,13 @@ class Index extends CI_Controller {
 
 		
 	}
+	public function tataCara(){
+		$this->load->view('user/v_tatacara');
+	}
+
+	public function login(){
+		$this->load->view('user/v_login');
+	}
 
 	public function homeLogo(){
 		redirect(base_url('Index'));	

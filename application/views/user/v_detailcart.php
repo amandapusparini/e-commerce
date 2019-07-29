@@ -17,7 +17,7 @@
 							<!-- Cart Bar -->
 							<div class="cart_bar">
 								<ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
-									<li class="mr-auto">Daftar Pesanan</li>
+									<li class="mr-auto"><h4>Daftar Pesanan<h4></li>
 									
 									<li style="width:10%;">Harga</li>
 									<li>Jumlah</li>

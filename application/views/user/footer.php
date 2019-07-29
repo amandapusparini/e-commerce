@@ -6,18 +6,20 @@
                         <div class="col-lg-4 col-md-4 col-6">
                             <aside class="f_widget f_about_widget">
                                 <img src="<?php echo base_url('assets/user');?>/img/logo.png" alt="">
-                                <p>Persuit is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</p>
+                                <p>Jalan Akses UI No. 61 Kelapa Dua Depok
+									Samping Universitas Gunadarma 
+									Kampus E</p>
                                 <h6>Social:</h6>
                                 <ul>
                                     <li><a href="#"><i class="social_facebook"></i></a></li>
-                                    <li><a href="#"><i class="social_twitter"></i></a></li>
+                                    <li><a href="https://twitter.com/bananafactory04"><i class="social_twitter"></i></a></li>
                                     <li><a href="#"><i class="social_pinterest"></i></a></li>
-                                    <li><a href="#"><i class="social_instagram"></i></a></li>
+                                    <li><a href="https://www.instagram.com/bananafactory04/"><i class="social_instagram"></i></a></li>
                                     <li><a href="#"><i class="social_youtube"></i></a></li>
                                 </ul>
                             </aside>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-6">
+                        <!--<div class="col-lg-2 col-md-4 col-6">
                             <aside class="f_widget link_widget f_info_widget">
                                 <div class="f_w_title">
                                     <h3>Information</h3>
@@ -70,7 +72,7 @@
                                     <li><a href="#">Newsletter</a></li>
                                 </ul>
                             </aside>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="footer_copyright">

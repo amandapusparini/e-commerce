@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="top_header_middle">
-                                <img src="<?php echo base_url('assets/user');?>/img/logo.png" alt="">
+                            <a href="<?php echo base_url('Index/homeLogo')?>"><img src="<?php echo base_url('assets/user');?>/img/logo_bf.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -76,7 +76,7 @@
                             </style>
                                 <ul class="top_right">
                                     <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
-                                    <li class="cart" style="content:'2' !important;"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                                    <li class="cart" style="content:'2' !important;"><a href="<?php echo base_url('Makanan/detailCart') ?>"><i class="icon-handbag icons"></i></a></li>
                                     <li class="h_price">
                                         <select class="selectpicker" disabled>
                                             <option>Rp. <?php echo number_format($sub_total, 0, ',', '.'); ?></option>
@@ -119,17 +119,14 @@
                                 Home <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Home Simple</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-carousel.html">Home Carousel</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Home Full Width</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-parallax.html">Home Parallax</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-sidebar.html">Home Boxed</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-fixed-menu.html">Home Fixed</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-carousel.html">Makanan</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Minuman</a></li>
+                                
                                 </ul>
                             </li>
                             <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                Pesanan <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="compare.html">Compare</a></li>
@@ -140,7 +137,7 @@
                                     <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown submenu">
+                            <!-- <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Shop <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
@@ -158,10 +155,9 @@
                                     <li class="nav-item"><a class="nav-link" href="shopping-cart2.html">Shopping Cart 02</a></li>
                                     <li class="nav-item"><a class="nav-link" href="empty-cart.html">Empty Cart</a></li>
                                 </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">lookbook</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            </li>-->
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Index/tataCara')?>">Tata Cara Pemesanan</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Index/login')?>">Login</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -169,123 +165,3 @@
         </header>
         <!--================End Menu Area =================-->
         
-        <!--================Slider Area =================-->
-        <section class="main_slider_area">
-            <div class="container">
-                <div id="main_slider" class="rev_slider" data-version="5.3.1.6">
-                    <ul>
-                        <li data-index="rs-1587" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="<?php echo base_url('assets/user');?>/img/home-slider/slider-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                        <!-- MAIN IMAGE -->
-                        <img src="<?php echo base_url('assets/user');?>/img/home-slider/slider-1.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
-
-                            <!-- LAYER NR. 1 -->
-                            <div class="slider_text_box">
-                                <div class="tp-caption tp-resizeme first_text" 
-                                data-x="['right','right','right','center','center']" 
-                                data-hoffset="['0','0','0','0']" 
-                                data-y="['top','top','top','top']" 
-                                data-voffset="['60','60','60','80','95']" 
-                                data-fontsize="['54','54','54','40','40']"
-                                data-lineheight="['64','64','64','50','35']"
-                                data-width="['470','470','470','300','250']"
-                                data-height="none"
-                                data-whitespace="['nowrap','nowrap','nowrap','nowrap','nowrap']"
-                                data-type="text" 
-                                data-responsive_offset="on" 
-                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                data-textAlign="['left','left','left','left','left','center']"
-                                style="z-index: 8;font-family: Montserrat,sans-serif;font-weight:700;color:#29263a;"><img src="<?php echo base_url('assets/user');?>/img/home-slider/2017-text.png" alt=""></div>
-
-                                <div class="tp-caption tp-resizeme secand_text" 
-                                    data-x="['right','right','right','center','center',]" 
-                                    data-hoffset="['0','0','0','0']" 
-                                    data-y="['top','top','top','top']" data-voffset="['255','255','255','230','220']"  
-                                    data-fontsize="['48','48','48','48','36']"
-                                    data-lineheight="['52','52','52','46']"
-                                    data-width="['450','450','450','450','450']"
-                                    data-height="none"
-                                    data-whitespace="normal"
-                                    data-type="text" 
-                                    data-responsive_offset="on"
-                                    data-transform_idle="o:1;"
-                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                    data-textAlign="['left','left','left','left','left','center']"
-                                    >Jajal <br />Collection 
-                                </div>
-
-                                <div class="tp-caption tp-resizeme third_btn" 
-                                    data-x="['right','right','right','center','center','center']" 
-                                    data-hoffset="['0','0','0','0']" 
-                                    data-y="['top','top','top','top']" data-voffset="['385','385','385','385','350']" 
-                                    data-width="['450','450','450','auto','auto']"
-                                    data-height="none"
-                                    data-whitespace="nowrap"
-                                    data-type="text" 
-                                    data-responsive_offset="on" 
-                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                    data-textAlign="['left','left','left','left','left','center']">
-                                    <!-- <a class="checkout_btn" href="#">read more</a> -->
-                                </div>
-                            </div>
-                        </li>
-                        <li data-index="rs-1588" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300"  data-thumb="<?php echo base_url('assets/user');?>/img/home-slider/slider-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                        <!-- MAIN IMAGE -->
-                        <img src="<?php echo base_url('assets/user');?>/img/home-slider/slider-2.jpg"  alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="5" class="rev-slidebg" data-no-retina>
-                        <!-- LAYERS -->
-                            <!-- LAYERS -->
-
-                            <!-- LAYER NR. 1 -->
-                            <div class="slider_text_box">
-                                <div class="tp-caption tp-resizeme first_text" 
-                                data-x="['right','right','right','center','center']" 
-                                data-hoffset="['0','0','0','0']" 
-                                data-y="['top','top','top','top']" 
-                                data-voffset="['60','60','60','80','95']" 
-                                data-fontsize="['54','54','54','40','40']"
-                                data-lineheight="['64','64','64','50','35']"
-                                data-width="['470','470','470','300','250']"
-                                data-height="none"
-                                data-whitespace="['nowrap','nowrap','nowrap','nowrap','nowrap']"
-                                data-type="text" 
-                                data-responsive_offset="on" 
-                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                data-textAlign="['left','left','left','left','left','center']"
-                                style="z-index: 8;font-family: Montserrat,sans-serif;font-weight:700;color:#29263a;"><img src="<?php echo base_url('assets/user');?>/img/home-slider/2017-text.png" alt=""></div>
-
-                                <div class="tp-caption tp-resizeme secand_text" 
-                                    data-x="['right','right','right','center','center',]" 
-                                    data-hoffset="['0','0','0','0']" 
-                                    data-y="['top','top','top','top']" data-voffset="['255','255','255','230','220']"  
-                                    data-fontsize="['48','48','48','48','36']"
-                                    data-lineheight="['52','52','52','46']"
-                                    data-width="['450','450','450','450','450']"
-                                    data-height="none"
-                                    data-whitespace="normal"
-                                    data-type="text" 
-                                    data-responsive_offset="on"
-                                    data-transform_idle="o:1;"
-                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                    data-textAlign="['left','left','left','left','left','center']"
-                                    >Best Summer <br />Collection 
-                                </div>
-
-                                <div class="tp-caption tp-resizeme third_btn" 
-                                    data-x="['right','right','right','center','center','center']" 
-                                    data-hoffset="['0','0','0','0']" 
-                                    data-y="['top','top','top','top']" data-voffset="['385','385','385','385','350']" 
-                                    data-width="['450','450','450','auto','auto']"
-                                    data-height="none"
-                                    data-whitespace="nowrap"
-                                    data-type="text" 
-                                    data-responsive_offset="on" 
-                                    data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-                                    data-textAlign="['left','left','left','left','left','center']">
-                                    <!-- <a class="checkout_btn" href="#">read more</a> -->
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <!--================End Slider Area =================-->
