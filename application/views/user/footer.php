@@ -121,7 +121,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="<?php echo base_url('assets/user');?>/vendors/vertical-slider/js/jQuery.verticalCarousel.js"></script>
         <script src="<?php echo base_url('assets/user');?>/vendors/jquery-ui/jquery-ui.js"></script>
         
-	<script src="<?php echo base_url('assets/user');?>/js/theme.js"></script>
+	   <script src="<?php echo base_url('assets/user');?>/js/theme.js"></script>
+        <script src="<?php echo base_url('assets/user');?>/lib/noty.min.js"></script>
+
+<script type="text/javascript">
+    function home(){
+        window.location.assign("<?php echo base_url(); ?>");
+    }
+</script>
+
+        <?php if($this->session->flashdata('notif')){?>
+        <script type="text/javascript">
+            new Noty({
+                
+                text: '<?php echo $this->session->flashdata('pesan'); ?>',
+                timeout: 3000,
+                theme: "metroui",
+                type: "<?php echo $this->session->flashdata('type'); ?>",
+
+                
+            }).show();
+        </script>
+        <?php } ?>
 	
     </body>
 </html>

@@ -6898,7 +6898,7 @@ i:before {
   border: none;
 }
 
-.login{
+/*.login{
   width: 100% ;
   margin-top:7%;
   box-shadow:0 3px 20px rgba(227,14,14,1.3);
@@ -6907,7 +6907,7 @@ i:before {
 
 .btn{
   width:49%;
-}
+}*/
 
 
 /* End Parallax Footer Area css
@@ -6915,3 +6915,16 @@ i:before {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+
+.login{
+    width: 30% ;
+    margin-top:2%;
+    margin-bottom: 2%;
+    box-shadow:0 3px 20px rgba(227,14,14,1.3);
+    padding: 30px;
+}
+
+.btn{
+    width:49%;
+}
+

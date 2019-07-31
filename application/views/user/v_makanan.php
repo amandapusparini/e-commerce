@@ -1,52 +1,39 @@
 <?php $this->load->view ("user/header") ?>
-<div class="super_container_inner">
-		<div class="super_overlay"></div>
-
-		
-
-		<!-- Products -->
-		<div class="row products_row">
-				<?php foreach($rowmakanan as $row){ ?>
-					<!-- Product -->
-					<div class="col-xl-4 col-md-6">
-						<div class="product">
-							<div class="product_image card-img-top"><img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="" width="100%" height="100%"></div>
-							<div class="product_content">
-								<div class="product_info d-flex flex-row align-items-start justify-content-start">
-									<div>
-										<div>
-											<div class="product_name"><a href="<?php echo base_url('Makanan/detailProduk')."/".$row->id_detail;; ?>"><?php echo $row->nama_detail; ?></a></div>
-											<div class="product_category">Kategori: <a href="category.html"><?php echo $row->nama_sub_kategori ?></a></div>
-										</div>
-									</div>
-									<div class="ml-auto text-right">
-										<!-- <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div> -->
-										<div class="product_price text-right">Rp. <span><?php echo $row->harga; ?></span></div>
-									</div>
-								</div>
-								
-								<div class="product_buttons">
-									<div class="text-right d-flex flex-row align-items-start justify-content-start">
-										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-											<div><div>
-											<a href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>">
-												<img src="<?php echo base_url('assets/user');?>/images/cart.svg" class="svg" alt="">
-											</a>
-											<div>+</div></div></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				<?php } ?>
-	
-
-		<!-- Features -->
-		
-		<div class="features">
-			<div class="container">
-				
-			</div>
-		</div>
+        <!--================Latest Product isotope Area =================-->
+        <section class="fillter_latest_product">
+            <div class="container">
+                <div class="single_c_title">
+                    <u><h2><?php echo $nama; ?></h2></u>
+                </div>
+                <div class="fillter_l_p_inner">
+                    <div class="row isotope_l_p_inner">
+                            
+		        <?php foreach($rowmakanan as $row){ ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="l_product_item">
+                                <div class="l_p_img">
+                                        <?php if($row->gambar !="") {?>
+                                <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="<?php echo $row->nama_detail; ?>" height="200px" width="270px">
+                                        <?php } else{?>
+                                <img src="<?php echo base_url('assets/uploads/files');?>/no_img.jpg" alt="<?php echo $row->nama_detail; ?>" height="200px" width="270px">
+                                        <?php } ?>
+                                </div>
+                                <div class="l_p_text">
+                                    <ul>
+                                        <!-- <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li> -->
+                                        <li><a class="add_cart_btn" href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>">Add To Cart</a></li>
+                                        <!-- <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li> -->
+                                    </ul>
+                                    <h4><?php echo $row->nama_detail; ?></h4>
+                                    <h5>Rp. <?php echo number_format($row->harga, 0, ',', '.'); ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Latest Product isotope Area =================-->
+        
 <?php $this->load->view ("user/footer")?>

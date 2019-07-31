@@ -49,10 +49,10 @@
                 <input type="text" class="form-control" name="email" id="email" placeholder="Masukkan Email">
         </div>
 
-        <!--<div class="form-group">
+        <div class="form-group">
                 <label for="gambar">Gambar</label>
                 <input type="file" class="form-control" name="gambar" id="gambar" placeholder="">
-        </div>-->
+        </div>
 
         <button class="btn btn-primary" name='btn' id="btn" colspan="3" align="right">Simpan</button>
     </form>

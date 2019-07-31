@@ -97,7 +97,13 @@ class User extends CI_Controller {
         
         if($ceklogin){
             //echo "Berhasi Login";
-            $this->session->set_userdata('id_user', $ceklogin->id_user);
+            $data = array(
+                    'id_user'=>$ceklogin->id_user,
+                    'gambar' => $ceklogin->gambar,
+                    'nama' => $ceklogin->nama
+                );
+            $this->session->set_userdata($data);
+            // $this->session->set_userdata('gambar', $ceklogin->gambar);
             redirect(base_url('Index'));
         } else{
             //echo"Gagal Login";
@@ -110,5 +116,9 @@ class User extends CI_Controller {
     public function proseslogout(){
         $this->session->sess_destroy();
         redirect(base_url('Index'));
+    }
+
+    public function profil(){
+        
     }
 }

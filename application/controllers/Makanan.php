@@ -11,10 +11,10 @@ class Makanan extends CI_Controller {
 
 	public function index($id_sub_kategori=NULL)
 	{
-	 //untuk menghapus ssemua makanan di cart
-		// $this->cart->destroy();
+		$this->db->where('id_sub_kategori',$id_sub_kategori);
+		$getnama = $this->db->get('sub_kategori')->row();
+		$data['nama'] = $getnama->nama_sub_kategori;
         $data['rowmakanan']= $this->M_makanan->cekData($id_sub_kategori);
-        // var_dump($data); exit();
 		$this->load->view('user/v_makanan', $data);
 	}
 
@@ -23,29 +23,34 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputcart($id_detail){
-		$this->db->where('id_detail', $id_detail);
-		$getdetail=$this->db->get('detail_kategori')->row();
-		// var_dump("disini"); exit();
+		if(!empty($this->session->userdata('id_user'))){
+			$this->db->where('id_detail', $id_detail);
+			$getdetail=$this->db->get('detail_kategori')->row();
+			// var_dump("disini"); exit();
 
-		//membuat shoping cart
-		$data = array(
-			'id' => $getdetail->id_detail,
-			'qty' => 1,
-			'name' => $getdetail->nama_detail,
-			'price' => $getdetail->harga,
-			'image'=>$getdetail->gambar
-		);
+			//membuat shoping cart
+			$data = array(
+				'id' => $getdetail->id_detail,
+				'qty' => 1,
+				'name' => $getdetail->nama_detail,
+				'price' => $getdetail->harga,
+				'image'=>$getdetail->gambar
+			);
 
+			
+			$this->cart->insert($data);
+		}else{
+			$data = array(
+				'notif'=>true, 
+				'pesan'=>"Silahkan login terlebih dahulu.", 
+				'type'=>'warning'
+			);
+			
+			$this->session->set_flashdata($data);
+		}
 		
-		$this->cart->insert($data);
 
-		// redirect(base_url())
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
-		//untuk ngecek script
-		// foreach ($this->cart->contents() as $key ) {
-		// 	echo $key['qty']."<br>";
-		// }
-		//  exit;
 	}
 
 	public function detailCart(){
@@ -127,6 +132,7 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputPesanan(){
+		// var_dump($this->input->post());
 		// exit();
 		$id_user = $this->session->userdata('id_user');
 
