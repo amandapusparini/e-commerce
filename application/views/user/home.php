@@ -135,29 +135,15 @@
                             </div>
                             <div class="l_p_text">
                                 <ul>
-                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <!-- <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li> -->
                                     <li><a href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>" class="add_cart_btn">Add To Cart</a></li>
-                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                    <!-- <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li> -->
                                 </ul>
                                 <h4><?php echo $row->nama_detail; ?></h4>
                                 <h5>Rp. <?php echo number_format($row->harga, 0, ',', '.'); ?></h5>
                             </div>
                         </div>
-                        <!-- <div class="l_product_item">
-                            <div class="l_p_img">
-                                <img src="<?php echo base_url('assets/user');?>/img/product/l-product-5.jpg" alt="">
-                            </div>
-                            <div class="l_p_text">
-                               <ul>
-                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                </ul>
-                                <h4>Oxford Shirt</h4>
-                                <h5>$85.50</h5>
-                            </div>
-                        </div> -->
-		    </div>
+		            </div>
 		    <?php } ?>
                 </div>
             </div>
