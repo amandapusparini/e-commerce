@@ -86,9 +86,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <!--================End Footer Area =================-->
         
         <script>
-		function getMakanan(id_sub_kategori){
-			if(id_sub_kategori != ""){
-				location.href="<?php echo base_url('Makanan/index/"+id_sub_kategori+"') ?>";
+		function getMakanan(id_kategori){
+			if(id_kategori != ""){
+				location.href="<?php echo base_url('Index/kategori/"+id_kategori+"') ?>";
 			}
 		}
 	</script>

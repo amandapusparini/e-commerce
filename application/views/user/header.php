@@ -7,7 +7,7 @@
         
         <link rel="icon" href="<?php echo base_url('assets/user');?>/img/fav-icon.png" type="image/x-icon" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Persuit</title>
+        <title>Banana Outlet Factory</title>
 
         <!-- Icon css link -->
         <link href="<?php echo base_url('assets/user');?>/css/font-awesome.min.css" rel="stylesheet">
@@ -113,38 +113,49 @@
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <?php 
-                        $this->db->order_by('urutan','asc');
-                        $dataKategori = $this->db->get('sub_kategori')->result();
+                        $dataKategori = $this->db->get('kategori')->result();
                         // var_dump($dataKategori); die();
                      ?>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav categories">
                             <li class="nav-item">
                                 <select class="selectpicker" onchange="getMakanan(this.value)">
-				                    <option value="">Kategori</option>
+				                    <option value="" style="border-bottom: thin solid">Kategori</option>
+
 					               <?php 
                                         foreach ($dataKategori as $key) {
                                     ?>
-                                    <option value="<?php echo $key->id_sub_kategori; ?>"><?php echo $key->nama_sub_kategori ?></option>
+                                    <option value="<?php echo $key->id_kategori; ?>"><?php echo $key->kategori ?></option>
                                     <?php
                                         }
                                    ?>
                                 </select>
                             </li>
                         </ul>
+                        <?php 
+                            $this->db->order_by('urutan','asc');
+                            $dataSubKategori = $this->db->get('sub_kategori')->result();
+                            // var_dump($dataKategori); die();
+                         ?>
                         <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>">Beranda</a></li>
+
                             <li class="nav-item dropdown submenu active">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                Daftar Menu <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="home-carousel.html">Makanan</a>
+                                    <?php 
+                                        foreach ($dataSubKategori as $key) {
+                                    ?>
+                                    <li class="nav-item"><a class="nav-link" href="<?php  echo base_url('Makanan/index/')."/".$key->id_sub_kategori ?>"><?php echo $key->nama_sub_kategori ?></a>
+                                    <?php } ?>
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Minuman</a></li>
                                 
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown submenu">
+                            <!-- <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Pesanan <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
@@ -156,26 +167,8 @@
                                     <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
                                 </ul>
-                            </li>
-                            <!-- <li class="nav-item dropdown submenu">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Shop <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-2column.html">Prodcut No Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-3column.html">Prodcut Two Column</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-4column.html">Product Grid</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-left-sidebar.html">Categories Left Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-right-sidebar.html">Categories Right Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-grid-left-sidebar.html">Categories Grid Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details.html">Prodcut Details 01</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details2.html">Prodcut Details 02</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details3.html">Prodcut Details 03</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="shopping-cart.html">Shopping Cart 01</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="shopping-cart2.html">Shopping Cart 02</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="empty-cart.html">Empty Cart</a></li>
-                                </ul>
-                            </li>-->
+                            </li> -->
+                            
                             <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Index/tataCara')?>">Tata Cara Pemesanan</a></li>
                             <?php if(!empty($this->session->userdata('id_user'))) {?>
                                 <li class="nav-item dropdown submenu">
@@ -184,6 +177,7 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/profil')."/".$this->session->userdata('id_user')?>">Profil</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/profil')."/".$this->session->userdata('id_user')?>">Pesanan</a></li>
                                         <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/proseslogout') ?>">Logout</a></li>
                                     </ul>
                                 </li>

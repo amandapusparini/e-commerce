@@ -48,6 +48,19 @@ class Index extends CI_Controller {
 		$this->load->view('user/v_tatacara');
 	}
 
+	public function kategori($id_kategori){
+		$this->db->where('kategori.id_kategori',$id_kategori);
+		$this->db->join('sub_kategori','sub_kategori.id_kategori=kategori.id_kategori');
+		$this->db->join('detail_kategori','sub_kategori.id_sub_kategori=detail_kategori.id_sub_kategori');
+		$data['detail_menu'] = $this->db->get('kategori')->result();
+
+
+		$this->db->where('kategori.id_kategori',$id_kategori);
+		$getKategori = $this->db->get('kategori')->row();
+		$data['search'] = $getKategori->kategori;
+		$this->load->view('user/v_search',$data);
+	}
+
 	public function login(){
 		$this->load->view('user/v_login');
 	}

@@ -103,22 +103,45 @@ class User extends CI_Controller {
                     'nama' => $ceklogin->nama
                 );
             $this->session->set_userdata($data);
+
+            $data = array(
+                'notif'=>true, 
+                'pesan'=>"Login berhasil.", 
+                'type'=>'success'
+            );
+            
+            $this->session->set_flashdata($data);
             // $this->session->set_userdata('gambar', $ceklogin->gambar);
             redirect(base_url('Index'));
         } else{
             //echo"Gagal Login";
-            $this->session->set_flashdata('notif', 'Gagal');
-            redirect(base_url('Index'));
+            // $this->session->set_flashdata('notif', 'Gagal');
+            $data = array(
+                'notif'=>true, 
+                'pesan'=>"Silahkan cek username dan password anda.", 
+                'type'=>'warning'
+            );
+            
+            $this->session->set_flashdata($data);
+            redirect(base_url('Index/login'));
         }
 
     }
 
     public function proseslogout(){
         $this->session->sess_destroy();
+
+        $data = array(
+                'notif'=>true, 
+                'pesan'=>"Terimakasih.", 
+                'type'=>'success'
+            );
+            
+            $this->session->set_flashdata($data);
         redirect(base_url('Index'));
     }
 
     public function profil(){
-        
+
     }
 }
