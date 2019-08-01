@@ -140,7 +140,7 @@
                         <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>">Beranda</a></li>
 
-                            <li class="nav-item dropdown submenu active">
+                            <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Daftar Menu <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>

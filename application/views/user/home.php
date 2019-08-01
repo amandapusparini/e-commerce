@@ -119,7 +119,7 @@
             </div>
         </section>
         <!--================End Slider Area =================-->
-        
+
         <!--================Our Latest Product Area =================-->
         <section class="our_latest_product">
             <div class="container">
@@ -131,7 +131,7 @@
                     <div class="item">
                         <div class="l_product_item">
                             <div class="l_p_img">
-                                <a href="<?php echo base_url('Makanan/detailCart') ?>">
+                                <a href="<?php echo base_url('Makanan/detailProduk')."/".$row->id_detail ?>">
                                     <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="">
                                 </a>
                             </div>
@@ -163,7 +163,9 @@
                     <div class="item">
                         <div class="l_product_item">
                             <div class="l_p_img">
-                                <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="">
+                                <a href="<?php echo base_url('Makanan/detailProduk')."/".$row->id_detail ?>">
+                                    <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="">
+                                </a>
                             </div>
                             <div class="l_p_text">
                                 <ul>

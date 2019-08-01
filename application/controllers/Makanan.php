@@ -119,7 +119,8 @@ class Makanan extends CI_Controller {
 	public function detailProduk($id_detail){
 		$this->db->where('id_detail', $id_detail);
 		$data['getdetail']=$this->db->get('detail_kategori')->row();
-		//var_dump($data); exit();
+		$data['detail_produk'] = true;
+		// var_dump($data); exit();
 		$this->load->view('user/v_produk',$data);
 	}
 

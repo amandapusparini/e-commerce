@@ -99,16 +99,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="<?php echo base_url('assets/user');?>/js/popper.min.js"></script>
         <script src="<?php echo base_url('assets/user');?>/js/bootstrap.min.js"></script>
-        <!-- Rev slider js -->
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script src="<?php echo base_url('assets/user');?>/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-      
+        
         <!-- Extra plugin css -->
         <script src="<?php echo base_url('assets/user');?>/vendors/counterup/jquery.waypoints.min.js"></script>
         <script src="<?php echo base_url('assets/user');?>/vendors/counterup/jquery.counterup.min.js"></script>
@@ -122,7 +113,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="<?php echo base_url('assets/user');?>/vendors/vertical-slider/js/jQuery.verticalCarousel.js"></script>
         <script src="<?php echo base_url('assets/user');?>/vendors/jquery-ui/jquery-ui.js"></script>
         
-	   <script src="<?php echo base_url('assets/user');?>/js/theme.js"></script>
+	   <!-- <script src="<?php echo base_url('assets/user');?>/js/theme.js"></script> -->
         <script src="<?php echo base_url('assets/user');?>/lib/noty.min.js"></script>
 
 <script type="text/javascript">

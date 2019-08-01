@@ -1,59 +1,58 @@
 <?php $this->load->view ("user/header") ?>
-<div class="super_container_inner">
-		<div class="super_overlay"></div>
-<!-- Product -->
-
-    <div class="product" style="margin-top:100px;">
-        <div class="container">
-            <div class="row">
-                
-                <!-- Product Image -->
-                <div class="col-lg-6">
-                    <div class="product_image_slider_container">
-                        <div class="carousel_container">
-                            <div id="carousel" class="flexslider">
-                                <ul class="slides">
-                                    <li>
-                                        <div><img src="<?php echo base_url('assets/uploads/files'."/".$getdetail->gambar); ?>" /></div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
+<!--================Product Details Area =================-->
+<section class="product_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="product_details_slider">
+                    <div id="product_slider" class="rev_slider">
+                        <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $getdetail->gambar; ?>" width="100%" height="100%">
                     </div>
                 </div>
-
-                <!-- Product Info -->
-                <div class="col-lg-6 product_col">
-                    <div class="product_info">
-                        <div class="product_name"><h3><?php echo $getdetail->nama_detail; ?></h3></div>
-                        <div class="product_category">Kategori: <?php echo  $getdetail->nama_detail ?></div>
-                        <div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
-                            <!-- <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div> -->
-                            <!-- <div class="product_reviews">4.7 out of (3514)</div>
-                            <div class="product_reviews_link"><a href="#">Reviews</a></div> -->
+            </div>
+            <div class="col-lg-8">
+                <div class="product_details_text">
+                    <h3><?php echo $getdetail->nama_detail ?></h3>
+                    <h4>Rp. <?php echo number_format($getdetail->harga, 0, ',', '.'); ?></h4>
+                    <?php echo $getdetail->deskripsi ?>
+                    <div class="quantity">
+                        <div class="custom">
+                        <!-- <form action="<?php //echo base_url('Makanan/tambahMakanan') ?>" method="post"> -->
+                            <button onclick="var result = document.getElementById('jml'); var jml = result.value; if( !isNaN( jml ) &amp;&amp; jml > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon_minus-06"></i></button>
+                            <input type="text" name="jml" id="jml" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('jml'); var jml = result.value; if( !isNaN( jml )) result.value++;return false;" class="increase items-count" type="button"><i class="icon_plus"></i></button>
                         </div>
-                        <div class="product_price">Rp. <span><?php echo  $getdetail->harga; ?></span></div>
-                        <div class="product_text"><?php echo  $getdetail->deskripsi ?></div>
-                        <div class="product_buttons">
-                            <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                    <div><div><img src="<?php echo base_url('assets/user');?>/images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                </div>
-                                <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                    <div><div>
-                                    <a href="<?php echo base_url('Makanan/inputcart')."/".$getdetail->id_detail; ?>">
-                                        <img src="<?php echo base_url('assets/user');?>/images/cart.svg" class="svg" alt="">
-                                    </a>
-                                    <div>+</div></div></div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <a class="add_cart_btn" href="#" onclick="tambahPesanan('<?php echo $getdetail->id_detail ?>')">Tambah</a>
+                        <!-- <input type="hidden" name="id_detail" id="id_detail" value="<?php //echo $getdetail->id_detail ?>"> -->
+                        <!-- <input type="submit" name="" class="add_cart_btn" value="Tambah"> -->
+                        <!-- </form> -->
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php $this->load->view ("user/footer")?>
+</section>
+<!--================End Product Details Area =================-->
+<script>
+function tambahPesanan(id_detail){
+    var jml = $("#jml").val();
+    // var id_detail = $("#jml").val();
+    // $str = $("#tambahDetail").find('input').serialize();
+
+    // alert(jml);
+    $.ajax({
+        url: "<?php echo base_url('Makanan/tambahMakanan');?>",
+        type: "POST",
+        data: "jml="+jml+"&id_detail="+id_detail,
+        datatype: "json",
+        success:function(data){
+            // alert("berhasil");
+            location.reload();
+            // console.log(data);
+        }
+    });
+}
+</script>
+<!--================End Related Product Area =================-->
+<?php $this->load->view ("user/footer_detail")?>

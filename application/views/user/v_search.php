@@ -11,6 +11,7 @@
 		        <?php foreach($detail_menu as $row){ ?>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="l_product_item">
+                                <a href="<?php echo base_url('Makanan/detailProduk')."/".$row->id_detail ?>">
                                 <div class="l_p_img">
                                         <?php if($row->gambar !="") {?>
                                 <img src="<?php echo base_url('assets/uploads/files');?>/<?php echo $row->gambar; ?>" alt="<?php echo $row->nama_detail; ?>" height="200px" width="270px">
@@ -18,6 +19,7 @@
                                 <img src="<?php echo base_url('assets/uploads/files');?>/no_img.jpg" alt="<?php echo $row->nama_detail; ?>" height="200px" width="270px">
                                         <?php } ?>
                                 </div>
+                                </a>
                                 <div class="l_p_text">
                                     <ul>
                                         <!-- <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li> -->
