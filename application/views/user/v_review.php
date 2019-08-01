@@ -35,9 +35,8 @@
 
         <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
             <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-                <div class="button button_clear trans_200" style="margin-right:30px"><a href="<?php echo base_url('Makanan/inputPesanan');?>">Lain Kali</a></div>
-                <div class="button button_continue trans_200"><a href="<?php echo base_url('Makanan/inputPesanan'); ?>">Simpan</a></div>
-                <input type="submit" value="disini">
+                <div class="button button_clear trans_200" style="margin-right:30px"><a href="<?php echo base_url('Makanan/inputPesanan');?>"  class="add_cart_btn">Lain Kali</a></div>
+                <div class="button button_continue trans_200"><a href="<?php echo base_url('Makanan/inputPesanan'); ?>"  class="add_cart_btn">Simpan</a></div>
             </div>
         </div>
     </form>

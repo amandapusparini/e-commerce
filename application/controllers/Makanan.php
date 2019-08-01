@@ -172,6 +172,32 @@ class Makanan extends CI_Controller {
 		redirect(base_url('Index'));	
 	}
 
+	public function deleteMakanan(){
+		$id_detail = $this->input->post('id_detail');
+		
+		$data = array(
+			'id' => $id_detail,
+			'qty' =>  + 3
+		);
+
+		
+		$this->cart->insert($data);
+		$total = 0;
+		foreach ($this->cart->contents() as $key ) {
+				var_dump($key['qty']); die();
+				if($key['qty']<=0){
+					$this->cart->remove($key['rowid']);
+				}else{
+					
+					$total = $total + $key['qty'];
+				}
+			}
+
+		// $data = json_decode("success");
+
+		echo json_encode("das");
+	}
+
 
 	
 		

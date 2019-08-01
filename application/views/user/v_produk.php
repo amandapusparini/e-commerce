@@ -40,8 +40,8 @@ function tambahPesanan(id_detail){
     // var id_detail = $("#jml").val();
     // $str = $("#tambahDetail").find('input').serialize();
 
-    // alert(jml);
-    $.ajax({
+     // alert(jml);
+     $.ajax({
         url: "<?php echo base_url('Makanan/tambahMakanan');?>",
         type: "POST",
         data: "jml="+jml+"&id_detail="+id_detail,
@@ -52,6 +52,7 @@ function tambahPesanan(id_detail){
             // console.log(data);
         }
     });
+    
 }
 </script>
 <!--================End Related Product Area =================-->
