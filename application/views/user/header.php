@@ -177,7 +177,7 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/profil')."/".$this->session->userdata('id_user')?>">Profil</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/profil')."/".$this->session->userdata('id_user')?>">Pesanan</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="<?php //echo base_url('User/profil')."/".$this->session->userdata('id_user')?>">Pesanan</a></li> -->
                                         <li class="nav-item"><a class="nav-link" href="<?php echo base_url('User/proseslogout') ?>">Logout</a></li>
                                     </ul>
                                 </li>

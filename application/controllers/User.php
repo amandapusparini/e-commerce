@@ -22,33 +22,12 @@ class User extends CI_Controller {
 			$extractFile = pathinfo($uploadFile['name']);
 			$size = $_FILES['gambar']['size']; //untuk mengetahui ukuran file
 			$tipe = $_FILES['gambar']['type'];// untuk mengetahui tipe file
-			//Dibawah ini adalah untuk mengatur format gambar yang dapat di uplada ke server.
-			//Anda bisa tambahakan jika ingin memasukan format yang lain tergantung kebutuhan anda.
-			// $exts =array('image/jpeg','image/jpg','image/png');
-			// if(!in_array(($tipe),$exts)){
-
-			// 	$this->session->set_flashdata(array("type" => "error", "msg" =>"Sorry, you must be upload only file  and JPG"));
-
-			// redirect(base_url('employee/masteremployee/addemployee/'.$this->input->post('emp_mst_id').'.html'));
-
-			// }elseif(($size !=0)&&($size>(1000*1024))){
-
-			// 	// dibawah ini script untuk mengatur ukuran file yang dapat di upload ke server
-			// 	$this->session->set_flashdata(array("type" => "error", "msg" =>"Sorry, file max. 1 MB"));
-
-			// 	redirect(base_url('employee/masteremployee/addemployee/'.$this->input->post('emp_mst_id').'.html'));
-			// }else{
-
 				$sameName = 0; // Menyimpan banyaknya file dengan nama yang sama dengan file yg diupload
 				$handle = opendir($uploadDir);
-				while(false !== ($file = readdir($handle))){ // Looping isi file pada directory tujuan
-					// Apabila ada file dengan awalan yg sama dengan nama file di uplaod
+				while(false !== ($file = readdir($handle))){ 
 					if(strpos($file,$extractFile['filename']) !== false)
 					$sameName++; // Tambah data file yang sama
 				}
-
-				/* Apabila tidak ada file yang sama ($sameName masih '0') maka nama file pakai
-				* nama ketika diupload, jika $sameName > 0 maka pakai format "namafile($sameName).ext */
 				$newName = empty($sameName) ? $uploadFile['name'] : $extractFile['filename'].'('.$sameName.').'.$extractFile['extension'];
 
 					if(move_uploaded_file($uploadFile['tmp_name'],$uploadDir.$newName)){
@@ -141,7 +120,84 @@ class User extends CI_Controller {
         redirect(base_url('Index'));
     }
 
-    public function profil(){
+    public function profil($id_user){
+        // var_dump($id_user); exit();
 
+        $this->db->where('id_user',$id_user);
+        $data['getUser'] = $this->db->get('user')->row();
+
+        $this->db->where('id_user',$id_user);
+        $data['riwayat'] = $this->db->get('pesanan')->result();
+
+        $this->load->view('user/v_profil',$data);
+    }
+
+    public function updateUser(){
+        // var_dump($_POST); die();
+        $nama = $this->input->post('nama');
+        $no_tlp = $this->input->post('no_tlp');
+        $alamat = $this->input->post('alamat');
+        $email = $this->input->post('email');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $id_user = $this->input->post('id_user');
+
+        if(empty($_FILES['gambar']['tmp_name'])){
+            $this->db->where('id_user',$id_user);                     
+            $this->db->set('nama', $nama);
+            $this->db->set('email', $email);
+            $this->db->set('no_tlp', $no_tlp);
+            $this->db->set('alamat', $alamat);
+            $this->db->set('username', $username);
+            $this->db->set('password', md5($password));
+            $this->db->update('user');
+
+            // print_r($param);
+            // exit;
+
+            redirect(base_url('User/profil'."/".$id_user));
+        }else{
+             $uploadDir = "./assets/uploads/image_user/";
+                if(is_uploaded_file($_FILES['gambar']['tmp_name'])){
+
+                    $uploadFile = $_FILES['gambar'];
+                    // Extract nama file
+                    $extractFile = pathinfo($uploadFile['name']);
+                    $size = $_FILES['gambar']['size']; //untuk mengetahui ukuran file
+                    $tipe = $_FILES['gambar']['type'];// untuk mengetahui tipe file
+                        $sameName = 0; // Menyimpan banyaknya file dengan nama yang sama dengan file yg diupload
+                        $handle = opendir($uploadDir);
+                        while(false !== ($file = readdir($handle))){ 
+                            if(strpos($file,$extractFile['filename']) !== false)
+                            $sameName++; // Tambah data file yang sama
+                        }
+                        $newName = empty($sameName) ? $uploadFile['name'] : $extractFile['filename'].'('.$sameName.').'.$extractFile['extension'];
+
+                            if(move_uploaded_file($uploadFile['tmp_name'],$uploadDir.$newName)){
+                                
+                                $gambar=$newName;   
+                                $this->db->where('id_user',$id_user);                     
+                                $this->db->set('nama', $nama);
+                                $this->db->set('email', $email);
+                                $this->db->set('gambar', $gambar);
+                                $this->db->set('no_tlp', $no_tlp);
+                                $this->db->set('alamat', $alamat);
+                                $this->db->set('username', $username);
+                                $this->db->set('password', md5($password));
+                                $this->db->update('user');
+
+                                $this->session->set_userdata('gambar',$newName);
+                                // print_r($param);
+                                // exit;
+
+                                redirect(base_url('User/profil'."/".$id_user));
+                                
+                            }else{
+                                echo "gagal";
+                            }
+                    // }
+
+                }
+        }
     }
 }
