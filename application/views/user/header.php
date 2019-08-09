@@ -69,7 +69,7 @@
                             $sub_total = 0;
                                 foreach ($this->cart->contents() as $key ) {
                                         $jml = $jml + $key['qty'];
-                                        $sub_total = $sub_total + ($key['subtotal']*$jml);
+                                        $sub_total = $sub_total + $key['subtotal'] ;
                                     }
 
                             ?>
@@ -151,7 +151,7 @@
                                     <li class="nav-item"><a class="nav-link" href="<?php  echo base_url('Makanan/index/')."/".$key->id_sub_kategori ?>"><?php echo $key->nama_sub_kategori ?></a>
                                     <?php } ?>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Minuman</a></li>
+                                    <!-- <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Minuman</a></li> -->
                                 
                                 </ul>
                             </li>
@@ -189,5 +189,7 @@
                 </nav>
             </div>
         </header>
+
+        
         <!--================End Menu Area =================-->
         

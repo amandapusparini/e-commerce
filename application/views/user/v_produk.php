@@ -56,4 +56,4 @@ function tambahPesanan(id_detail){
 }
 </script>
 <!--================End Related Product Area =================-->
-<?php $this->load->view ("user/footer_detail")?>
+<?php $this->load->view ("user/footer")?>

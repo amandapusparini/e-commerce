@@ -23,10 +23,15 @@
                                 <div class="l_p_text">
                                     <ul>
                                         <!-- <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li> -->
-                                        <li><a class="add_cart_btn" href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>">Add To Cart</a></li>
+                                        <!-- <?php //if($row->stok==0) {?>
+                                            <li><a class="add_cart_btn" href="<?php// echo base_url('Makanan/stokKosong')."/".$row->id_detail; ?>">Add To Cart</a></li>
+                                        
+                                        <?php //}else{?> -->
+                                            <li><a class="add_cart_btn" href="<?php echo base_url('Makanan/inputcart')."/".$row->id_detail; ?>">Add To Cart</a></li>
                                         <!-- <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li> -->
+                                        <?php// } ?>
                                     </ul>
-                                    <h4><?php echo $row->nama_detail; ?></h4>
+                                    <h4><?php echo $row->nama_detail ?></h4>
                                     <h5>Rp. <?php echo number_format($row->harga, 0, ',', '.'); ?></h5>
                                 </div>
                             </div>

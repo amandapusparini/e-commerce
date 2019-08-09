@@ -13,7 +13,7 @@
     	<form action="<?php echo base_url('User/updateUser') ?>" method="post"  enctype="multipart/form-data">
 	     	<div class="row">
 				<div class="col-md-6">
-					<h5>Profi</h5>
+					<h5>Profil</h5>
 					<hr>
 					<div class="row">
 						<div class="col-md-3"><label>Nama</label></div>

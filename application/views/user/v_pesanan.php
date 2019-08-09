@@ -1,7 +1,7 @@
 <?php $this->load->view ("user/header") ?>
 <section class="fillter_latest_product">
     <div class="container">
-        <div class="col-md-6" style="border:thin dashed green;">
+        <div class="col-md-8" style="border:thin dashed green;">
             <div class="row">
                 <div class="col-md-4">
                     <label>No. Pesanan</label>
@@ -51,6 +51,7 @@
                 </div>
             </div>
         </div>
+        <br>
         
                 <h1>Pesanan</h1>
                 <table class="table table-bordered" width="50%">
@@ -80,7 +81,22 @@
                         <th>Rp. <?php echo number_format($total, 0, ',', '.'); ?></th>
                 </tr> 
                 </table>
-                
+        <br>
+
+    <form action="<?php echo base_url('Review/input') ?>" style="margin:100px" method="post" class="form-group">    
+        <div class="form-group">
+                <h4>Masukkan Komentar Anda Mengenai Kami</h4>
+                <br><br>
+                <label for="komentar"><h3>Komentar</h3></label>
+                <textarea class="form-control" rows="5" name="komentar" id="komentar" placeholder=""></textarea>
+        </div>
+
+        <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+            <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+                <div class="button button_continue trans_200"><button type="submit"  class="add_cart_btn">Simpan</button></div>
+            </div>
+        </div>
+    </form>         
 
 
 <?php $this->load->view ("user/footer")?>

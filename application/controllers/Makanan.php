@@ -23,22 +23,50 @@ class Makanan extends CI_Controller {
 	}
 
 	public function inputcart($id_detail){
-		if(!empty($this->session->userdata('id_user'))){
-			$this->db->where('id_detail', $id_detail);
-			$getdetail=$this->db->get('detail_kategori')->row();
-			// var_dump("disini"); exit();
+		if(!empty($this->session->userdata('id_user'))){//cek login
+			$this->db->limit(1);
+			$this->db->order_by('id_toko','desc');
+			$getToko = $this->db->get('toko')->row();
+	    
+			$status_toko = $getToko->status_toko;
+			if($status_toko=="tutup"){//status toko tutup
+				$data = array(
+					'notif'=>true, 
+					'pesan'=>"Toko sedang tutup. Silahkan kunjungi.......", 
+					'type'=>'warning'
+				);
+				$this->session->set_flashdata($data);
+			}else{//status buka
+				$this->db->where('id_detail', $id_detail);
+				$getdetail=$this->db->get('detail_kategori')->row();
+				$stok = $getdetail->stok;
+				$nama_detail = $getdetail->nama_detail;
+				if($stok==0){//cek stok
+					$data = array(
+						'notif'=>true, 
+						'pesan'=>"{$nama_detail} sudah habis.", 
+						'type'=>'warning'
+					);
+					
+					$this->session->set_flashdata($data);
+				}else{
+					$stok = $stok - 1;
+					$this->db->where('id_detail',$getdetail->id_detail);
+					$this->db->set('stok',$stok);
+					$this->db->update('detail_kategori');
+					//membuat shoping cart
+					$data = array(
+						'id' => $getdetail->id_detail,
+						'qty' => 1,
+						'name' => $getdetail->nama_detail,
+						'price' => $getdetail->harga,
+						'image'=>$getdetail->gambar
+					);
 
-			//membuat shoping cart
-			$data = array(
-				'id' => $getdetail->id_detail,
-				'qty' => 1,
-				'name' => $getdetail->nama_detail,
-				'price' => $getdetail->harga,
-				'image'=>$getdetail->gambar
-			);
-
-			
-			$this->cart->insert($data);
+					
+					$this->cart->insert($data);
+				}
+			}
 		}else{
 			$data = array(
 				'notif'=>true, 
@@ -62,23 +90,35 @@ class Makanan extends CI_Controller {
 
 		$this->db->where('id_detail', $this->input->post('id_detail'));
 		$getdetail=$this->db->get('detail_kategori')->row();
-		// var_dump($getdetail); exit();		
+		$stok = $getdetail->stok;
+		
+		if( $this->input->post('jml')>$stok){
+			$data = array(
+				'notif'=>true, 
+				'pesan'=>"Stok tidak mencukupi.", 
+				'type'=>'warning'
+			);
+			
+			$this->session->set_flashdata($data);
+		}else{
+			//membuat shoping cart
+			$data = array(
+				'id' => $getdetail->id_detail,
+				'qty' =>  $this->input->post('jml'),
+				'name' => $getdetail->nama_detail,
+				'price' => $getdetail->harga,
+				'image'=>$getdetail->gambar
+			);
 
-		//membuat shoping cart
-		$data = array(
-			'id' => $getdetail->id_detail,
-			'qty' =>  $this->input->post('jml'),
-			'name' => $getdetail->nama_detail,
-			'price' => $getdetail->harga,
-			'image'=>$getdetail->gambar
-		);
+			
+			$this->cart->insert($data);
+			$total = 0;
+			foreach ($this->cart->contents() as $key ) {
+					$total = $total + $key['qty'];
+			}
+		}
 
 		
-		$this->cart->insert($data);
-		$total = 0;
-		foreach ($this->cart->contents() as $key ) {
-				$total = $total + $key['qty'];
-			}
 
 		$data = json_decode($this->input->post('jml'));
 	}
@@ -87,7 +127,12 @@ class Makanan extends CI_Controller {
 
 		$this->db->where('id_detail', $this->input->post('id_detail'));
 		$getdetail=$this->db->get('detail_kategori')->row();
-		// var_dump($getdetail); exit();		
+		$stok = $getdetail->stok;
+		
+		$stok = $stok + $this->input->post('jml');
+		$this->db->where('id_detail',$getdetail->id_detail);
+		$this->db->set('stok',$stok);
+		$this->db->update('detail_kategori');
 
 		//membuat shoping cart
 		$data = array(
@@ -196,6 +241,25 @@ class Makanan extends CI_Controller {
 		// $data = json_decode("success");
 
 		echo json_encode("das");
+	}
+
+	public function stokKosong($id_detail){
+		$this->db->where('id_detail',$id_detail);
+		$getData = $this->db->get('detail_kategori')->row();
+
+		$nama_detail = $getData->nama_detail;
+
+		$data = array(
+			'notif'=>true, 
+			'pesan'=>"Pesanan {$nama_detail} sudah habis.", 
+			'type'=>'warning'
+		);
+		
+		$this->session->set_flashdata($data);
+
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+		
 	}
 
 

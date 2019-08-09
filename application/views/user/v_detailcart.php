@@ -70,7 +70,7 @@
                                         	<td><p><b>Total</b></p></td>
                                         	<td><p>Rp. <?php echo number_format($total, 0, ',', '.'); ?></p></td>
                                         	<?php if($total!=""){?>
-                                        	<td><p><a href="<?php echo base_url('Review/reviewProduk'); ?>"  class="btn btn-success">Check Out</a></p></td>
+                                        	<td><p><a href="<?php echo base_url('Makanan/inputPesanan'); ?>"  class="btn btn-success">Check Out</a></p></td>
                                         	<?php } ?>
                                         </tr>
                                     </tbody>
